@@ -1,4 +1,5 @@
-import { Application, Sprite, Container, Graphics, TextStyle, Text, filters } from 'pixi.js'
+import { Application, Graphics, TextStyle, Text, filters } from 'pixi.js'
+import { Scene } from './scenes/Scene'
 
 const app = new Application({
 	view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
@@ -10,21 +11,6 @@ const app = new Application({
 	width: 1024,
 	height: 1280
 });
-
-const conty: Container = new Container();
-conty.x = 200;
-conty.y = 0;
-
-app.stage.addChild(conty)
-
-const clampy: Sprite = Sprite.from("clampy.png");
-
-clampy.anchor.set(0.5);
-
-clampy.x = app.screen.width / 2;
-clampy.y = app.screen.height / 2;
-
-app.stage.addChild(clampy);
 
 const graphy: Graphics = new Graphics();
 
@@ -51,3 +37,6 @@ app.stage.addChild(texty)
 
 const myBlurFilter = new filters.BlurFilter()
 graphy.filters = [myBlurFilter]
+
+const sceny: Scene = new Scene(app.screen.width, app.screen.height)
+app.stage.addChild(sceny)
